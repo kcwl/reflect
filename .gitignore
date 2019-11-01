@@ -1,32 +1,13 @@
-# Prerequisites
-*.d
+#忽略 vs文件
+.vs
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#忽略user文件
+*.user
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
+#忽略各种dll lib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
 *.lib
 
-# Executables
-*.exe
-*.out
-*.app
+#忽略debug release目录
+Debug/
+Release/
