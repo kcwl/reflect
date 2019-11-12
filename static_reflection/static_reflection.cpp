@@ -32,9 +32,6 @@ int main()
 
 	auto val = reflection::get_element<1>(l);
 
-	auto m = make_reflect_member(ll{});
-	constexpr std::size_t size = m.size();
-
 	std::cin.get();
 
 	return 0;

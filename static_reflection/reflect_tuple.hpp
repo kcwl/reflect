@@ -47,7 +47,7 @@ namespace
 	template<size_t N, class T>
 	constexpr auto as_tuple(T& val)
 	{
-		return reflection::tie_as_tuple(val, size_t_<N>{});
+		return reflection::tie_as_tuple(val, reflection::size_t_<N>{});
 	}
 }
 
@@ -85,7 +85,7 @@ namespace reflection
 		{
 			auto str_single = s.substr(0, pos);
 
-			s = s.substr(pos + 2);
+			s = s.substr(pos + 1);
 
 			vec.push_back(str_single);
 		}
@@ -126,7 +126,7 @@ namespace reflection
 	}
 
 	template<size_t N,class T>
-	constexpr auto get_element(T& val)
+	constexpr auto get_element(const T& val)
 	{
 		auto m = make_reflect_member(T{});
 		constexpr std::size_t size = m.size();
