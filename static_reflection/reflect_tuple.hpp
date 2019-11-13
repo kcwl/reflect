@@ -132,4 +132,20 @@ namespace reflection
 		constexpr std::size_t size = m.size();
 		return std::get<N>(as_tuple<size>(val));
 	}
+
+	template<class T>
+	constexpr auto get_name()
+	{
+		auto m = make_reflect_member(T{});
+
+		return m.name();
+	}
+
+	template<class T>
+	constexpr auto get_member_tp()
+	{
+		using M = decltype(make_reflect_member(T{}));
+
+		return M::apply_member();
+	}
 }
