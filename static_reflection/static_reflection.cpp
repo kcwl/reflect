@@ -4,8 +4,9 @@
 #include "pch.h"
 #include <iostream>
 #include "reflect_tuple.hpp"
+#include <algorithm>
 
-using namespace reflection;
+using namespace reflect;
 
 struct ll
 {
@@ -18,19 +19,31 @@ make_reflect_tuple(ll, a, b, c)
 
 int main()
 {
-	auto s_1 = reflection::get<0>(ll{});
+	auto s_1 = reflect::reflection::get<0>(ll{});
 
-	auto s_2 = reflection::get<1>(ll{});
+	auto s_2 = reflect::reflection::get<1>(ll{});
 
-	auto s_3 = reflection::get<2>(ll{});
+	auto s_3 = reflect::reflection::get<2>(ll{});
 
 	std::cout <<"struct ll's members : \n" <<"member 1:" << s_1 <<"\nmember 2:"<< s_2 << "\nmember 3:" << s_3 << std::endl;
 
 	ll l;
 	l.a = 1;
 	l.b = 2;
+	l.c = 'b';
 
-	auto val = reflection::get_element<1>(l);
+	auto val = reflect::reflection::get_element<1>(l);
+
+	const int n = get_string_count("a,b,c");
+
+	auto tp = reflect::reflection::get_tp<get_string_count("a, b, c")>("a, b, c");
+
+	int a = 6;
+	const int c = 1;
+	constexpr int b = c;
+
+	reflect::reflection::get<b>(ll{});
+
 
 	std::cin.get();
 

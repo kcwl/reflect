@@ -8,16 +8,16 @@
 
 namespace
 {
-	template<class Tuple, std::size_t N = std::tuple_size<Tuple>::value, class Indices = std::make_index_sequence<N>>
-	auto to_array(Tuple&& arr)
-	{
-		return to_tuple(std::forward<Tuple>(arr), Indices{});
-	}
-
 	template<class Tuple, std::size_t... I>
 	auto to_array(Tuple&& tuple, std::index_sequence<I...>)->std::array<typename std::tuple_element<0, typename std::remove_reference<Tuple>::type>::type, sizeof...(I)>
 	{
 		return { { std::get<I>(std::forward<Tuple>(tuple))... } };
+	}
+
+	template<class Tuple, std::size_t N = std::tuple_size<Tuple>::value, class Indices = std::make_index_sequence<N>>
+	auto to_array(Tuple&& arr)
+	{
+		return to_array(std::forward<Tuple>(arr), Indices{});
 	}
 
 	template<class Array, std::size_t... I>
@@ -48,6 +48,15 @@ namespace
 	constexpr auto as_tuple(T& val)
 	{
 		return reflection::tie_as_tuple(val, reflection::size_t_<N>{});
+	}
+
+	template<class T>
+	constexpr auto as_tuple(T& val)
+	{
+		auto m = make_reflect_member(T{});
+		constexpr std::size_t N = m.size();
+		
+		return as_tuple<N>(val);
 	}
 }
 
@@ -106,7 +115,7 @@ namespace reflection
 				return reflection::spilt_string<get_string_count(#__VA_ARGS__)>(#__VA_ARGS__);	\
 			}	\
 			using size_type = std::integral_constant<size_t, get_string_count(#__VA_ARGS__)>;	\
-			constexpr static std::string_view name() { return std::string_view(#struct_name,sizeof(#struct_name)); }	\
+			constexpr static std::string_view name() { return std::string_view(#struct_name,sizeof(#struct_name) - 1); }	\
 			constexpr static std::size_t size() { return size_type::value; }	\
 		};	\
 		return reflect_member{};	\
@@ -122,7 +131,6 @@ namespace reflection
 		using M = decltype(make_reflect_member(std::forward<T>(t)));
 
 		return std::get<N>(M::apply_member());
-		//return std::forward<T>(t).*(std::get<N>(M::apply_member()));
 	}
 
 	template<size_t N,class T>

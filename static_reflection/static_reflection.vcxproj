@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="algorithm.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="reflect_tuple.hpp" />
     <ClInclude Include="tuple_generated.hpp" />
