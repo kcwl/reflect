@@ -13,12 +13,11 @@ namespace Aquarius
 #define get_string_count(str)	\
 		Aquarius::algorithm::get_string_count_of(str,sizeof(str))
 
-#define make_reflect(STRUCT,...)	\
+#define MAKE_REFLECT(STRUCT,...)	\
 		static auto make_reflect_member(STRUCT const&)	\
 		{	\
 			struct reflect_member	\
 			{	\
-				using type = void;	\
 				constexpr decltype(auto) static apply_member()	\
 				{	\
 					return Aquarius::reflection::get_tp<get_string_count(#__VA_ARGS__)>(#__VA_ARGS__);	\
@@ -63,7 +62,7 @@ namespace Aquarius
 		template<class T>
 		constexpr auto get_member_tp()
 		{
-			using M = decltype(make_reflect_member(T{});
+			using M = decltype(make_reflect_member(T{}));
 
 			return M::apply_member();
 		}

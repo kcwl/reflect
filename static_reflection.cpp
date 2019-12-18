@@ -17,7 +17,7 @@ public:
 	char c;
 };
 
-make_reflect_tuple(ll, a, b, c)
+AQUARIUS_REFLECT_DEFINE(ll, a, b, c)
 
 int main()
 {
