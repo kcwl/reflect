@@ -2,81 +2,61 @@
 #include <tuple>
 #include <type_traits>
 #include <string_view>
-#include <Aquarius/reflection/algorithm.hpp>
+#include <Aquarius/reflection/detail.hpp>
+#include "Aquarius/reflection/tuple_size.hpp"
 
 
-namespace Aquarius
+namespace aquarius
 {
-	namespace reflection
+	namespace reflect
 	{
-
-#define get_string_count(str)	\
-		Aquarius::algorithm::get_string_count_of(str,sizeof(str))
-
-<<<<<<< HEAD
-#define MAKE_REFLECT(STRUCT,...)	\
-=======
-#define make_reflect(STRUCT,...)	\
->>>>>>> 1e76520... 调整目录结构，优化代码
-		static auto make_reflect_member(STRUCT const&)	\
-		{	\
-			struct reflect_member	\
-			{	\
-<<<<<<< HEAD
-=======
-				using type = void;	\
->>>>>>> 1e76520... 调整目录结构，优化代码
-				constexpr decltype(auto) static apply_member()	\
-				{	\
-					return Aquarius::reflection::get_tp<get_string_count(#__VA_ARGS__)>(#__VA_ARGS__);	\
-				}	\
-				using size_type = std::integral_constant<size_t, get_string_count(#__VA_ARGS__)>;	\
-				constexpr static std::string_view name() { return std::string_view(#STRUCT,sizeof(#STRUCT) - 1); }	\
-				constexpr static std::size_t size() { return size_type::value; }	\
-			};	\
-			return reflect_member{};	\
+		template<size_t N, class T>
+		constexpr auto translate_tuple(T& val)
+		{
+			return generate::make_tuple(val, generate::size_t_<N>{});
 		}
 
-		template<std::size_t N, class T>
-		constexpr decltype(auto) get(T&& t)
+		template<class T>
+		constexpr auto tuple_name()
 		{
-			using M = decltype(make_reflect_member(std::forward<T>(t)));
-
-			return std::get<N>(M::apply_member());
-		}
-
-		template<std::size_t N>
-		constexpr decltype(auto) get_tp(const char* str)
-		{
-			return Aquarius::algorithm::spilt<N>(std::move(str));
+			return make_reflect_member(T{}).name();
 		}
 
 		template<size_t N, class T>
-		constexpr auto get_element(const T& val)
-		{
-			auto m = make_reflect_member(T{});
-			constexpr std::size_t size = m.size();
-			return std::get<N>(algorithm::as_tuple<size>(val));
-		}
-
-		template<class T>
-		constexpr auto get_name()
+		constexpr auto tuple_element(const T& val)
 		{
 			auto m = make_reflect_member(T{});
 
-			return m.name();
+			return std::get<N>(translate_tuple<tuple_size<T>::value>(val));
 		}
 
-		template<class T>
-		constexpr auto get_member_tp()
+		template<std::size_t N, class... Args>
+		constexpr auto tuple_element(std::tuple<Args...>&& tuple)
 		{
-<<<<<<< HEAD
-			using M = decltype(make_reflect_member(T{}));
-=======
-			using M = decltype(make_reflect_member(T{});
->>>>>>> 1e76520... 调整目录结构，优化代码
+			return std::get<N>(tuple);
+		}
 
-			return M::apply_member();
+		template<std::size_t N, class T>
+		constexpr auto tuple_element_name(const T&)
+		{
+			return std::get<N>(decltype(make_reflect_member(T{}))::apply_member());
+		}
+
+#define AQUARIUS_MEMBER(name) #name 
+
+#define MAKE_TUPLE(STRUCT,...)	\
+		static auto make_reflect_member(const STRUCT&)	\
+		{	\
+			struct reflect_member	\
+			{	\
+				inline constexpr decltype(auto) static apply_member()	\
+				{	\
+					return std::make_tuple(__VA_ARGS__);	\
+				}	\
+				inline constexpr static auto size(){ return aquarius::reflect::tuple_size<STRUCT>::value; }	\
+				inline constexpr static std::string_view name() { return std::string_view(#STRUCT,sizeof(#STRUCT) - 1); }	\
+			};	\
+			return reflect_member{};	\
 		}
 	}
 }

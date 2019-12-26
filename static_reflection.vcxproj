@@ -91,7 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -154,9 +154,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Aquarius\reflection.hpp" />
-    <ClInclude Include="Aquarius\reflection\algorithm.hpp" />
+    <ClInclude Include="Aquarius\reflection\detail.hpp" />
     <ClInclude Include="Aquarius\reflection\reflect_tuple.hpp" />
     <ClInclude Include="Aquarius\reflection\tuple_generated.hpp" />
+    <ClInclude Include="Aquarius\reflection\tuple_size.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="static_reflection.cpp" />

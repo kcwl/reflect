@@ -3,51 +3,44 @@
 
 #include <iostream>
 #include <algorithm>
-#include <Aquarius/reflection.hpp>
+#include "Aquarius/reflection.hpp"
 
-
-class ll
+struct test_struct
 {
-public:
-	ll(){}
-	ll(int a1, int b1, char c1) : a(a1), b(b1), c(c1) {}
-
 	int a;
-	int b;
+	float b;
 	char c;
+	std::string str;
 };
 
-AQUARIUS_REFLECT_DEFINE(ll, a, b, c)
+AQUARIUS_REFLECT_DEFINE(test_struct, "a", "b", "c")
 
 int main()
 {
-	auto s_1 = Aquarius::reflection::get<0>(ll{});
+	test_struct test;
+	test.a = 1;
+	test.b = 2;
+	test.c = 'b';
 
-	auto s_2 = Aquarius::reflection::get<1>(ll{});
+	std::cout << "struct's name : " << aquarius::tuple_name<test_struct>() << std::endl;
 
-	auto s_3 = Aquarius::reflection::get<2>(ll{});
+	constexpr std::size_t size = aquarius::tuple_size_v<test_struct>;
 
-	std::cout <<"struct ll's members : \n" <<"member 1:" << s_1 <<"\nmember 2:"<< s_2 << "\nmember 3:" << s_3 << std::endl;
+	auto s_1 = aquarius::reflect::tuple_element<0>(test);
 
-	ll l;
-	l.a = 1;
-	l.b = 2;
-	l.c = 'b';
+	auto s_2 = aquarius::reflect::tuple_element<1>(test);
 
-	auto val = Aquarius::reflection::get_element<1>(l);
+	auto s_3 = aquarius::reflect::tuple_element<2>(test);
 
-	Aquarius::reflection::get_name<ll>();
+	std::cout <<"struct ll's members : \n" <<"member 1:" << s_1 <<"\nmember 2:"<< s_2 << "\nmember 3:" << s_3 << std::endl << std::endl;
 
-	const int n = get_string_count("a,b,c");
+	auto element_name_0 = aquarius::tuple_element_name<0>(test_struct{});
 
-	auto tp = Aquarius::reflection::get_tp<get_string_count("a, b, c")>("a, b, c");
+	auto element_name_1 = aquarius::tuple_element_name<1>(test_struct{});
 
-	int a = 6;
-	const int c = 1;
-	constexpr int b = c;
+	auto element_name_2 = aquarius::tuple_element_name<2>(test_struct{});
 
-	Aquarius::reflection::get<b>(ll{});
-
+	std::cout << "struct ll's members'name  : \n" << "name 1:" << element_name_0 << "\nname 2:" << element_name_1 << "\nname 3:" << element_name_2 << std::endl;
 
 	std::cin.get();
 

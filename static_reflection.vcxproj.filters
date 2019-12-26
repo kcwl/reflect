@@ -21,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aquarius\reflection\algorithm.hpp">
-      <Filter>Aquarius\reflection</Filter>
-    </ClInclude>
     <ClInclude Include="Aquarius\reflection\reflect_tuple.hpp">
       <Filter>Aquarius\reflection</Filter>
     </ClInclude>
@@ -32,6 +29,12 @@
     </ClInclude>
     <ClInclude Include="Aquarius\reflection.hpp">
       <Filter>Aquarius</Filter>
+    </ClInclude>
+    <ClInclude Include="Aquarius\reflection\detail.hpp">
+      <Filter>Aquarius\reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Aquarius\reflection\tuple_size.hpp">
+      <Filter>Aquarius\reflection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
