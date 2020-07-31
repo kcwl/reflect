@@ -25,8 +25,6 @@ namespace aquarius
 		template<size_t N, class T>
 		constexpr auto tuple_element(const T& val)
 		{
-			auto m = make_reflect_member(T{});
-
 			return std::get<N>(translate_tuple<tuple_size<T>::value>(val));
 		}
 
@@ -41,6 +39,13 @@ namespace aquarius
 		{
 			return std::get<N>(decltype(make_reflect_member(T{}))::apply_member());
 		}
+
+		template<std::size_t N, class T>
+		struct tuple_element_type
+		{
+			using type = decltype(tuple_element<N>(T{}));
+		};
+
 
 #define AQUARIUS_MEMBER(name) #name 
 

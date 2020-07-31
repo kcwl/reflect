@@ -15,7 +15,14 @@ namespace aquarius
 		}
 
 		template<class T>
-		constexpr auto make_tuple(T& val, size_t_<1>) noexcept
+		constexpr auto make_tuple(T& val, size_t_<1>,std::enable_if_t<std::is_class_v<T>>* = 0) noexcept
+		{
+			auto& [a] = val;
+			return std::make_tuple(a);
+		}
+
+		template<class T>
+		constexpr auto make_tuple(T& val, size_t_<1>,std::enable_if_t<!std::is_class_v<T>>* = 0) noexcept
 		{
 			auto& a = val;
 			return std::make_tuple(a);
@@ -236,6 +243,34 @@ namespace aquarius
 		{
 			auto& [a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H] = val;
 			return std::make_tuple(a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H);
+		}
+
+		template <class T>
+		constexpr auto make_tuple(T& val, size_t_<33>) noexcept
+		{
+			auto& [a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I] = val;
+			return std::make_tuple(a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I);
+		}
+
+		template <class T>
+		constexpr auto make_tuple(T& val, size_t_<34>) noexcept
+		{
+			auto& [a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J] = val;
+			return std::make_tuple(a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J);
+		}
+
+		template <class T>
+		constexpr auto make_tuple(T& val, size_t_<35>) noexcept
+		{
+			auto& [a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K] = val;
+			return std::make_tuple(a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K);
+		}
+
+		template <class T>
+		constexpr auto make_tuple(T& val, size_t_<36>) noexcept
+		{
+			auto& [a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L] = val;
+			return std::make_tuple(a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L);
 		}
 	}
 }
