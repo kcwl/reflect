@@ -26,6 +26,9 @@ namespace aquarius
 		return reflect::tuple_name<T>();
 	}
 
+	template<std::size_t N, class T>
+	using tuple_elemet_t = typename reflect::tuple_element_type<N, T>::type;
+
 	template<std::size_t N,class T>
 	using tuple_size = reflect::tuple_size<T>;
 
