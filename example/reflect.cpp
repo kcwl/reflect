@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <algorithm>
-#include <aquarius/reflection.hpp>
+#include <reflect.hpp>
 
 struct test_struct
 {
@@ -26,11 +26,11 @@ int main()
 
 	constexpr std::size_t size = aquarius::tuple_size_v<test_struct>;
 
-	auto s_1 = aquarius::reflect::tuple_element<0>(test);
+	auto s_1 = reflect::tuple_element<0>(test);
 
-	auto s_2 = aquarius::reflect::tuple_element<1>(test);
+	auto s_2 = reflect::tuple_element<1>(test);
 
-	auto s_3 = aquarius::reflect::tuple_element<2>(test);
+	auto s_3 = reflect::tuple_element<2>(test);
 
 	std::cout <<"struct ll's members : \n" <<"member 1:" << s_1 <<"\nmember 2:"<< s_2 << "\nmember 3:" << s_3 << std::endl << std::endl;
 

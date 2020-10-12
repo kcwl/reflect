@@ -13,32 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="aquarius">
+    <Filter Include="include">
       <UniqueIdentifier>{15b69ca4-7615-495b-b654-9d749e086cb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="aquarius\reflection">
+    <Filter Include="include\reflect">
       <UniqueIdentifier>{2785515c-e94a-49ae-8e04-c8516acd60df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\aquarius\reflection\detail.hpp">
-      <Filter>aquarius\reflection</Filter>
+    <ClInclude Include="..\include\aquarius\reflect.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\aquarius\reflection\reflect_tuple.hpp">
-      <Filter>aquarius\reflection</Filter>
+    <ClInclude Include="..\include\reflection\reflect_tuple.hpp">
+      <Filter>include\reflect</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\aquarius\reflection\tuple_generated.hpp">
-      <Filter>aquarius\reflection</Filter>
+    <ClInclude Include="..\include\reflection\tuple_generated.hpp">
+      <Filter>include\reflect</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\aquarius\reflection\tuple_size.hpp">
-      <Filter>aquarius\reflection</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\aquarius\reflection.hpp">
-      <Filter>aquarius</Filter>
+    <ClInclude Include="..\include\reflection\tuple_size.hpp">
+      <Filter>include\reflect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="static_reflection.cpp">
+    <ClCompile Include="reflect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
