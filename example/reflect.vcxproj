@@ -155,7 +155,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\aquarius\reflect.hpp" />
+    <ClInclude Include="..\include\reflect.hpp" />
+    <ClInclude Include="..\include\reflection\detail.hpp" />
     <ClInclude Include="..\include\reflection\reflect_tuple.hpp" />
     <ClInclude Include="..\include\reflection\tuple_generated.hpp" />
     <ClInclude Include="..\include\reflection\tuple_size.hpp" />

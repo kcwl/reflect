@@ -1,37 +1,35 @@
 #pragma once
 #include "reflection/reflect_tuple.hpp"
+#include "reflection/detail.hpp"
 
 
-namespace aquarius
+namespace reflect
 {
-	#define AQUARIUS_MEMBER(name) #name 
+#define MACRO(...) __VA_ARGS__
 
-	#define AQUARIUS_REFLECT_DEFINE(STRUCT,...)	MAKE_TUPLE(STRUCT,__VA_ARGS__)
+#define REFLECT_DEFINE(...)	MACRO(__VA_ARGS__) MAKE_REFLECT(__VA_ARGS__)
 
 	template<size_t N, class T>
-	constexpr auto tuple_element(const T& val)
+	constexpr auto rf_element(const T& val)
 	{
-		return reflect::tuple_element<N>(val);
+		return rf::template rf_element<N>(val);
 	}
 
-	template<std::size_t N,class T>
-	constexpr auto tuple_element_name(const T& val)
+	template<class T, std::size_t N>
+	constexpr auto rf_elem_name()
 	{
-		return reflect::tuple_element_name<N>(val);
+		return rf::rf_elem_name<T,N>();
 	}
 
 	template<class T>
-	constexpr auto tuple_name()
+	constexpr auto rf_name()
 	{
-		return reflect::tuple_name<T>();
+		return rf::rf_name<T>();
 	}
 
-	template<std::size_t N, class T>
-	using tuple_elemet_t = typename reflect::tuple_element_type<N, T>::type;
-
-	template<std::size_t N,class T>
-	using tuple_size = reflect::tuple_size<T>;
+	template<class T, std::size_t N>
+	using tuple_elemet_t = typename rf::rf_element_type<T, N>::type;
 
 	template<class T>
-	inline constexpr static std::size_t tuple_size_v = reflect::tuple_size<T>::value;
+	inline constexpr static std::size_t rf_size_v = rf::rf_size<T>::value;
 }
