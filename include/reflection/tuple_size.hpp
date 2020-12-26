@@ -2,9 +2,9 @@
 #include <tuple>
 
 
-namespace aquarius
+namespace reflect
 {
-	namespace reflect
+	namespace rf
 	{
 		template<std::size_t N>
 		using size_t_ = std::integral_constant<std::size_t, N>;
@@ -23,13 +23,17 @@ namespace aquarius
 		using one_range = std::true_type;
 
 		template<class T, class Indice, class = void>
-		struct is_aggregate_initialize_impl : std::false_type {};
+		struct is_aggregate_initialize_impl : std::false_type
+		{
+		};
 
 		template<class T, std::size_t... N>
-		struct is_aggregate_initialize_impl < T, std::index_sequence<N...>, std::void_t<decltype(T{any_type{N}...}) >> : std::true_type {};
+		struct is_aggregate_initialize_impl < T, std::index_sequence<N...>, std::void_t<decltype(T{ any_type{N}... }) >> : std::true_type {};
 
 		template<class T, std::size_t N>
-		struct is_aggregate_initialize : is_aggregate_initialize_impl<T, std::make_index_sequence<N>> {};
+		struct is_aggregate_initialize : is_aggregate_initialize_impl<T, std::make_index_sequence<N>>
+		{
+		};
 
 
 		template<class T, std::size_t N>
@@ -100,7 +104,7 @@ namespace aquarius
 		}
 
 		template<class T>
-		struct tuple_size
+		struct rf_size
 		{
 			inline constexpr static std::size_t value = detect_fields_count<T>();
 		};

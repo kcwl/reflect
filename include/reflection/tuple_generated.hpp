@@ -1,9 +1,10 @@
 #pragma once
 #include <tuple>
 
-namespace aquarius
+
+namespace  reflect
 {
-	namespace generate
+	namespace detail
 	{
 		template <std::size_t Index>
 		using size_t_ = std::integral_constant<std::size_t, Index >;
@@ -15,14 +16,14 @@ namespace aquarius
 		}
 
 		template<class T>
-		constexpr auto make_tuple(T& val, size_t_<1>,std::enable_if_t<std::is_class_v<T>>* = 0) noexcept
+		constexpr auto make_tuple(T& val, size_t_<1>, std::enable_if_t<std::is_class_v<T>>* = 0) noexcept
 		{
 			auto& [a] = val;
 			return std::make_tuple(a);
 		}
 
 		template<class T>
-		constexpr auto make_tuple(T& val, size_t_<1>,std::enable_if_t<!std::is_class_v<T>>* = 0) noexcept
+		constexpr auto make_tuple(T& val, size_t_<1>, std::enable_if_t<!std::is_class_v<T>>* = 0) noexcept
 		{
 			auto& a = val;
 			return std::make_tuple(a);

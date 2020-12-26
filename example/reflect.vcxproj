@@ -155,14 +155,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\aquarius\reflection.hpp" />
-    <ClInclude Include="..\include\aquarius\reflection\detail.hpp" />
-    <ClInclude Include="..\include\aquarius\reflection\reflect_tuple.hpp" />
-    <ClInclude Include="..\include\aquarius\reflection\tuple_generated.hpp" />
-    <ClInclude Include="..\include\aquarius\reflection\tuple_size.hpp" />
+    <ClInclude Include="..\include\reflect.hpp" />
+    <ClInclude Include="..\include\reflection\detail.hpp" />
+    <ClInclude Include="..\include\reflection\reflect_tuple.hpp" />
+    <ClInclude Include="..\include\reflection\tuple_generated.hpp" />
+    <ClInclude Include="..\include\reflection\tuple_size.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="static_reflection.cpp" />
+    <ClCompile Include="reflect.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
