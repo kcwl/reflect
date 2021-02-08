@@ -10,15 +10,15 @@ namespace reflect
 #define REFLECT_DEFINE(...)	MACRO(__VA_ARGS__) MAKE_REFLECT(__VA_ARGS__)
 
 	template<size_t N, class T>
-	constexpr auto rf_element(const T& val)
+	constexpr auto rf_element(T&& val)
 	{
-		return rf::template rf_element<N>(val);
+		return rf::rf_element<N>(val);
 	}
 
-	template<class T, std::size_t N>
+	template<std::size_t N,class T>
 	constexpr auto rf_elem_name()
 	{
-		return rf::rf_elem_name<T,N>();
+		return rf::rf_elem_name<N,T>();
 	}
 
 	template<class T>
@@ -27,8 +27,8 @@ namespace reflect
 		return rf::rf_name<T>();
 	}
 
-	template<class T, std::size_t N>
-	using tuple_elemet_t = typename rf::rf_element_type<T, N>::type;
+	template<std::size_t N, class T>
+	using tuple_elemet_t = typename rf::rf_element_type<N, T>::type;
 
 	template<class T>
 	inline constexpr static std::size_t rf_size_v = rf::rf_size<T>::value;

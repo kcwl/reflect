@@ -155,11 +155,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\reflect.hpp" />
-    <ClInclude Include="..\include\reflection\detail.hpp" />
-    <ClInclude Include="..\include\reflection\reflect_tuple.hpp" />
-    <ClInclude Include="..\include\reflection\tuple_generated.hpp" />
-    <ClInclude Include="..\include\reflection\tuple_size.hpp" />
+    <ClInclude Include="..\include\aquarius\reflect.hpp" />
+    <ClInclude Include="..\include\reflect\detail.hpp" />
+    <ClInclude Include="..\include\reflect\reflect_tuple.hpp" />
+    <ClInclude Include="..\include\reflect\tuple_generated.hpp" />
+    <ClInclude Include="..\include\reflect\tuple_size.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="reflect.cpp" />
