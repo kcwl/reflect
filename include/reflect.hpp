@@ -1,6 +1,6 @@
 #pragma once
-#include "reflection/reflect_tuple.hpp"
-#include "reflection/detail.hpp"
+#include "reflect/reflect_tuple.hpp"
+#include "reflect/detail.hpp"
 
 
 namespace reflect
