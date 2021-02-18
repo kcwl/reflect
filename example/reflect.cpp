@@ -33,11 +33,11 @@ int main()
 
 	std::cout <<"struct ll's members : \n" <<"member 1:" << s_1 <<"\nmember 2:"<< s_2 << "\nmember 3:" << s_3 << std::endl << std::endl;
 
-	auto element_name_0 = reflect::rf_elem_name<test_struct,0>();
+	auto element_name_0 = reflect::rf_elem_name<0,test_struct>();
 
-	auto element_name_1 = reflect::rf_elem_name<test_struct,1>();
+	auto element_name_1 = reflect::rf_elem_name<1, test_struct>();
 
-	auto element_name_2 = reflect::rf_elem_name<test_struct,2>();
+	auto element_name_2 = reflect::rf_elem_name<2, test_struct>();
 
 	std::cout << "struct ll's members'name  : \n" << "name 1:" << element_name_0 << "\nname 2:" << element_name_1 << "\nname 3:" << element_name_2 << std::endl;
 

@@ -2,7 +2,7 @@
 #include <tuple>
 #include <type_traits>
 #include <string_view>
-#include "reflection/tuple_size.hpp"
+#include "reflect/tuple_size.hpp"
 #include "tuple_generated.hpp"
 
 
@@ -28,13 +28,26 @@ namespace reflect
 			return std::get<N>(translate_tuple<rf_size<T>::value>(val));
 		}
 
-		template<class T, std::size_t N>
+		template<std::size_t N, class T>
+		requires(std::is_same_v<T, std::vector<int>>)
+		constexpr auto rf_element(const T& val)
+		{
+			return val;
+		}
+
+		template<std::size_t N, class... Args>
+		constexpr auto rf_element(std::tuple<Args...>&& tuple)
+		{
+			return std::get<N>(tuple);
+		}
+
+		template<std::size_t N, class T>
 		constexpr auto rf_elem_name()
 		{
 			return std::get<N>(decltype(T::template make_reflect_member<T>())::apply_member());
 		}
 
-		template<class T, std::size_t N>
+		template<std::size_t N, class T>
 		struct rf_element_type
 		{
 			using type = decltype(rf_element<N>(T{}));
@@ -53,9 +66,9 @@ namespace reflect
 	        }\
 			inline constexpr decltype(auto) static apply_member()\
 			{\
-				return reflect::detail::template split<reflect_member,size()>();\
+				return detail::template split<reflect_member,size()>();\
 			}\
-			inline constexpr static std::string_view name() { return reflect::detail::template feild_name<_Ty>(); }\
+			inline constexpr static std::string_view name() { return detail::template feild_name<_Ty>(); }\
 		};\
 		return reflect_member{};\
 	}
