@@ -21,13 +21,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\aquarius\reflect.hpp">
+    <ClInclude Include="..\include\reflect.hpp">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\include\reflect\detail.hpp">
       <Filter>include\reflect</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\reflect\reflect_tuple.hpp">
+    <ClInclude Include="..\include\reflect\tuple_reflect.hpp">
       <Filter>include\reflect</Filter>
     </ClInclude>
     <ClInclude Include="..\include\reflect\tuple_generated.hpp">

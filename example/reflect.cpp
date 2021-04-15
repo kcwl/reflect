@@ -4,42 +4,39 @@
 #include <iostream>
 #include <algorithm>
 #include <reflect.hpp>
+#include <cassert>
 
-struct test_struct
+struct Test
 {
 	REFLECT_DEFINE(
 	int a;
 	float b;
-	char c;
-	std::string str;)
+	char c;)
 };
+
 
 int main()
 {
-	test_struct test;
+	Test test;
 	test.a = 1;
-	test.b = 2;
-	test.c = 'b';
+	test.b = 2.0f;
+	test.c = 'c';
 
-	std::cout << "struct's name : " << reflect::rf_name<test_struct>() << std::endl;
+	static_assert(reflect::rf_name<Test>() == "Test");
 
-	constexpr std::size_t size = reflect::rf_size_v<test_struct>;
+	static_assert(reflect::rf_size_v<Test> == 3);
 
-	auto s_1 = reflect::rf_element<0>(test);
+	static_assert(reflect::rf_elem_name<Test, 0>() == "a");
 
-	auto s_2 = reflect::rf_element<1>(test);
+	static_assert(reflect::rf_elem_name<Test, 1>() == "b");
 
-	auto s_3 = reflect::rf_element<2>(test);
+	static_assert(reflect::rf_elem_name<Test, 2>() == "c");
 
-	std::cout <<"struct ll's members : \n" <<"member 1:" << s_1 <<"\nmember 2:"<< s_2 << "\nmember 3:" << s_3 << std::endl << std::endl;
+	assert(reflect::rf_element<0>(test) == 1);
 
-	auto element_name_0 = reflect::rf_elem_name<0,test_struct>();
+	assert(reflect::rf_element<1>(test) == 2.0);
 
-	auto element_name_1 = reflect::rf_elem_name<1, test_struct>();
-
-	auto element_name_2 = reflect::rf_elem_name<2, test_struct>();
-
-	std::cout << "struct ll's members'name  : \n" << "name 1:" << element_name_0 << "\nname 2:" << element_name_1 << "\nname 3:" << element_name_2 << std::endl;
+	assert(reflect::rf_element<2>(test) == 'c');
 
 	std::cin.get();
 
