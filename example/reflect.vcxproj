@@ -102,7 +102,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -110,6 +110,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)..\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,10 +158,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\include\reflect.hpp" />
-    <ClInclude Include="..\include\reflection\detail.hpp" />
-    <ClInclude Include="..\include\reflection\reflect_tuple.hpp" />
-    <ClInclude Include="..\include\reflection\tuple_generated.hpp" />
-    <ClInclude Include="..\include\reflection\tuple_size.hpp" />
+    <ClInclude Include="..\include\reflect\detail.hpp" />
+    <ClInclude Include="..\include\reflect\tuple_reflect.hpp" />
+    <ClInclude Include="..\include\reflect\tuple_generated.hpp" />
+    <ClInclude Include="..\include\reflect\tuple_size.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="reflect.cpp" />

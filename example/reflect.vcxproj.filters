@@ -21,19 +21,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\reflection\reflect_tuple.hpp">
-      <Filter>include\reflect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\reflection\tuple_generated.hpp">
-      <Filter>include\reflect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\reflection\tuple_size.hpp">
-      <Filter>include\reflect</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\reflect.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\reflection\detail.hpp">
+    <ClInclude Include="..\include\reflect\detail.hpp">
+      <Filter>include\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\reflect\tuple_reflect.hpp">
+      <Filter>include\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\reflect\tuple_generated.hpp">
+      <Filter>include\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\reflect\tuple_size.hpp">
       <Filter>include\reflect</Filter>
     </ClInclude>
   </ItemGroup>
