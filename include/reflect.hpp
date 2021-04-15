@@ -18,7 +18,7 @@ namespace reflect
 	template<size_t N, typename T>
 	constexpr auto rf_element(const T& val)
 	{
-		return rf::template rf_element<N>(val);
+		return rf::rf_element<N>(val);
 	}
 
 	template<typename T, std::size_t N>
