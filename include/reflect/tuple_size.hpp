@@ -1,6 +1,7 @@
 #pragma once
 #include <tuple>
 #include <vector>
+#include "type_traits.hpp"
 
 namespace reflect
 {
@@ -92,14 +93,19 @@ namespace reflect
 
 
 		template<typename T>
+		requires(!detail::is_container_v<T>)
 		constexpr std::size_t detect_fields_count()
 		{
-			if constexpr (std::is_same_v<T, std::vector<int>>)
-				return 1;
-
 			constexpr std::size_t max_count = sizeof(T) * CHAR_BIT;
 
 			return detect_fields_count_impl<T>(size_t_<max_count>{});
+		}
+
+		template<typename T>
+		requires(detail::is_container_v<T>)
+		constexpr std::size_t detect_fields_count()
+		{
+			return 1;
 		}
 
 		template<typename T>
