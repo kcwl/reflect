@@ -32,4 +32,8 @@ namespace reflect
 
 	template<typename T>
 	inline constexpr static std::size_t rf_size_v = rf::rf_size<T>::value;
+
+	//template<typename T>
+	//requires(!detail::is_container_v<T>)
+	//inline constexpr static std::size_t rf_size_v = 1;
 }
