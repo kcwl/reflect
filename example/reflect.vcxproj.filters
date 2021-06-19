@@ -36,6 +36,9 @@
     <ClInclude Include="..\include\reflect\tuple_size.hpp">
       <Filter>include\reflect</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\reflect\type_traits.hpp">
+      <Filter>include\reflect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="reflect.cpp">

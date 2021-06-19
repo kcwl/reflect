@@ -14,6 +14,10 @@ struct Test
 	char c;)
 };
 
+struct Tt
+{
+	std::vector<int> a;
+};
 
 int main()
 {
@@ -21,6 +25,8 @@ int main()
 	test.a = 1;
 	test.b = 2.0f;
 	test.c = 'c';
+
+	static_assert(reflect::rf_size_v<Tt> == 1);
 
 	static_assert(reflect::rf_name<Test>() == "Test");
 

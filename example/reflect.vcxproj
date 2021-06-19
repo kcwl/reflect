@@ -162,6 +162,7 @@
     <ClInclude Include="..\include\reflect\tuple_reflect.hpp" />
     <ClInclude Include="..\include\reflect\tuple_generated.hpp" />
     <ClInclude Include="..\include\reflect\tuple_size.hpp" />
+    <ClInclude Include="..\include\reflect\type_traits.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="reflect.cpp" />
