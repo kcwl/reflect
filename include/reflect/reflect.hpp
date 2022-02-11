@@ -12,7 +12,7 @@ namespace reflect
 	template<typename T, std::size_t N>
 	struct rf_elem_type
 	{
-		using type = decltype(rf_element<N>(std::declval<T>()));
+		using type = decltype(get<N>(std::declval<T>()));
 	};
 
 	template<typename T, std::size_t N>
@@ -44,19 +44,19 @@ namespace reflect
 	inline constexpr static std::size_t rf_size_v = rf::rf_size<T>::value;
 
 	template<typename T>
-	constexpr auto rf_name()
+	constexpr auto title()
 	{
 		return rf::template feild_name<T>();
 	}
 
 	template<size_t N, typename T>
-	constexpr auto rf_element(const T& val)
+	constexpr auto get(const T& val)
 	{
 		return std::get<N>(rf::template make_tuple(val, rf::size_t_<rf_size_v<T>>{}));
 	}
 
 	template<typename T, std::size_t N>
-	constexpr auto rf_elem_name() -> std::string_view
+	constexpr auto name() -> std::string_view
 	{
 		return std::get<N>(decltype(T::template make_reflect_member<T>())::apply_member());
 	}
