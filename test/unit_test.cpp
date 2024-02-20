@@ -3,6 +3,7 @@
 #include <boost/test/unit_test_suite.hpp>
 #include <reflect.hpp>
 #include "generate.h"
+#include "no_pod.h"
 
 BOOST_AUTO_TEST_SUITE(reflect)
 

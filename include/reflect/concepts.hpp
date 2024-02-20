@@ -12,7 +12,10 @@ namespace reflect
 	template<typename _Ty>
 	concept pod_t = requires()
 	{
-		std::is_pod_v<std::remove_cvref_t<_Ty>>;
+		std::is_standard_layout_v<std::remove_cvref_t<_Ty>>;
 		std::is_trivial_v<std::remove_cvref_t<_Ty>>;
 	};
+
+	template<typename _Ty>
+	concept no_pod_t = !pod_t<_Ty>;
 }

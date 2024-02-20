@@ -139,6 +139,7 @@
     <ClInclude Include="..\include\reflect\generated.hpp" />
     <ClInclude Include="..\include\reflect\size.hpp" />
     <ClInclude Include="..\include\reflect\concepts.hpp" />
+    <ClInclude Include="..\macro_bind.hpp" />
     <ClInclude Include="generate.h" />
     <ClInclude Include="no_pod.h" />
   </ItemGroup>

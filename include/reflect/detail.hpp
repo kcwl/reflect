@@ -7,7 +7,7 @@ namespace reflect
 {
 	namespace detail
 	{
-		template<typename T>
+		template<typename _Ty>
 		constexpr std::string_view feild_name()
 		{
 			using namespace std::string_view_literals;
@@ -71,14 +71,14 @@ namespace reflect
 			return pos;
 		}
 
-		template<typename _Ty, std::size_t _Index>
+		template<typename _Ty, std::size_t Index>
 		constexpr auto get()
 		{
 			constexpr auto member_info = _Ty::member_str(); 
 
-			constexpr std::size_t pos = member_info.find_first_of(";", find_n_of<_Ty, _Index>());
+			constexpr std::size_t pos = member_info.find_first_of(";", find_n_of<_Ty, Index>());
 
-			constexpr std::string_view s = member_info.substr(find_n_of<_Ty, _Index - 1>() + 1, pos - find_n_of<_Ty, _Index - 1>() - 1);
+			constexpr std::string_view s = member_info.substr(find_n_of<_Ty, Index - 1>() + 1, pos - find_n_of<_Ty, Index - 1>() - 1);
 
 			constexpr std::string_view result = s.substr(s.rfind(" ") + 1);
 
@@ -91,10 +91,10 @@ namespace reflect
 			return std::array{ detail::get<_Ty, I>()... };
 		}
 
-		template<typename _Ty, std::size_t N, typename Indices = std::make_index_sequence<N>>
+		template<typename _Ty, std::size_t N, typename _Indices = std::make_index_sequence<N>>
 		constexpr auto split()
 		{
-			return split_impl<_Ty>(Indices{});
+			return split_impl<_Ty>(_Indices{});
 		}
 	}
 }

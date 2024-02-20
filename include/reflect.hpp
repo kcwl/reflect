@@ -6,14 +6,14 @@
 
 namespace reflect
 {
-	template<typename T, std::size_t N>
+	template<typename _Ty, std::size_t N>
 	struct element_type
 	{
-		using type = decltype(get<N>(std::declval<T>()));
+		using type = decltype(get<N>(std::declval<_Ty>()));
 	};
 
-	template<typename T, std::size_t N>
-	using elemet_t = typename element_type<T, N>::type;
+	template<typename _Ty, std::size_t N>
+	using elemet_t = typename element_type<_Ty, N>::type;
 
 	template<typename _Ty>
 	constexpr static std::size_t tuple_size_v = detail::tuple_size<_Ty>::value;
@@ -36,23 +36,23 @@ namespace reflect
 		return reflect_member{};\
 	}
 
-	template<typename T>
+	template<typename _Ty>
 	constexpr auto title()
 	{
-		return detail::template feild_name<T>();
+		return detail::template feild_name<_Ty>();
 	}
 
-	template<size_t N, typename T>
-	constexpr auto get(const T& val)
+	template<size_t N, typename _Ty>
+	constexpr auto get(const _Ty& val)
 	{
-		return std::get<N>(detail::template make_tuple(val, detail::size_t_<tuple_size_v<T>>{}));
+		return std::get<N>(detail::template make_tuple(val, detail::size_t_<tuple_size_v<_Ty>>{}));
 	}
 
 
-	template<typename T, std::size_t N>
+	template<typename _Ty, std::size_t N>
 	constexpr auto name() -> std::string_view
 	{
-		return std::get<N>(decltype(T::template make_reflect_member<T>())::apply_member());
+		return std::get<N>(decltype(_Ty::template make_reflect_member<_Ty>())::apply_member());
 	}
 }
 
