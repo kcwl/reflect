@@ -1,18 +1,18 @@
 #pragma once
 #include <tuple>
 #include <vector>
-#include "type_traits.hpp"
+#include <reflect/concepts.hpp>
 
 namespace reflect
 {
-	namespace rf
+	namespace detail
 	{
 		template<std::size_t N>
 		using size_t_ = std::integral_constant<std::size_t, N>;
 
 		struct any_type
 		{
-			std::size_t ignored_;
+			std::size_t ignored;
 
 			template<typename T>
 			constexpr operator T() const noexcept
@@ -92,9 +92,8 @@ namespace reflect
 		}
 
 
-		template<typename T>
-		requires(!is_container_v<T>)
-			constexpr std::size_t detect_fields_count()
+		template<pod_t T>
+		constexpr std::size_t detect_fields_count()
 		{
 			constexpr std::size_t max_count = sizeof(T) * CHAR_BIT;
 
@@ -102,14 +101,7 @@ namespace reflect
 		}
 
 		template<typename T>
-		requires(is_container_v<T>)
-			constexpr std::size_t detect_fields_count()
-		{
-			return 1;
-		}
-
-		template<typename T>
-		struct rf_size
+		struct tuple_size
 		{
 			inline constexpr static std::size_t value = detect_fields_count<T>();
 		};
