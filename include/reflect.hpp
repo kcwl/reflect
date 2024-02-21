@@ -1,7 +1,7 @@
 #pragma once
-#include <reflect/generated.hpp>
-#include <reflect/size.hpp>
-#include <reflect/detail.hpp>
+#include "reflect/generated.hpp"
+#include "reflect/size.hpp"
+#include "reflect/detail.hpp"
 #include <string_view>
 
 namespace reflect
