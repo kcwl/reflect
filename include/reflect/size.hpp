@@ -92,12 +92,18 @@ namespace reflect
 		}
 
 
-		template<pod_t _Ty>
+		template<no_container_t _Ty>
 		constexpr std::size_t detect_fields_count()
 		{
 			constexpr std::size_t max_count = sizeof(_Ty) * CHAR_BIT;
 
 			return detect_fields_count_impl<_Ty>(size_t_<max_count>{});
+		}
+
+		template<container_t _Ty>
+		constexpr std::size_t detect_fields_count()
+		{
+			return 1;
 		}
 
 		template<typename _Ty>

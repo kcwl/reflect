@@ -82,6 +82,10 @@ BOOST_AUTO_TEST_CASE(complex_type)
 	constexpr std::size_t a_size = reflect::tuple_size_v<query_role_list_body_response>;
 
 	static_assert(a_size == 1);
+
+	constexpr std::size_t str_size = reflect::tuple_size_v<std::string>;
+
+	static_assert(str_size == 1);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

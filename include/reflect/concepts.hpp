@@ -10,12 +10,18 @@ namespace reflect
 	concept class_t = std::is_class_v<std::remove_reference_t<_Ty>>;
 
 	template<typename _Ty>
-	concept pod_t = requires()
+	concept container_t = requires(_Ty value)
 	{
-		std::is_standard_layout_v<std::remove_cvref_t<_Ty>>;
-		std::is_trivial_v<std::remove_cvref_t<_Ty>>;
+		std::begin(value);
+		std::end(value);
+		typename _Ty::value_type;
+		typename _Ty::size_type;
+		typename _Ty::allocator_type;
+		typename _Ty::iterator;
+		typename _Ty::const_iterator;
+		value.size();
 	};
 
 	template<typename _Ty>
-	concept no_pod_t = !pod_t<_Ty>;
+	concept no_container_t = !container_t<_Ty>;
 }
