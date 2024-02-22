@@ -6,9 +6,6 @@ namespace reflect
 	template <typename _Ty>
 	concept tuple_t = requires() { std::tuple_size<_Ty>(); };
 
-	template <typename _Ty>
-	concept class_t = std::is_class_v<std::remove_reference_t<_Ty>>;
-
 	template<typename _Ty>
 	concept container_t = requires(_Ty value)
 	{
@@ -24,4 +21,7 @@ namespace reflect
 
 	template<typename _Ty>
 	concept no_container_t = !container_t<_Ty>;
+
+	template <typename _Ty>
+	concept single_t = std::is_class_v<std::remove_reference_t<_Ty>> && no_container_t<std::remove_reference_t<_Ty>>;
 }
