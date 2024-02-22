@@ -17,7 +17,7 @@ namespace reflect
 
 	template<typename _Ty>
 	constexpr static std::size_t tuple_size_v = detail::tuple_size<_Ty>::value;
-
+#ifndef MAKE_REFLECT
 #define MAKE_REFLECT(...)	\
 	template<typename _Ty>\
 	static auto make_reflect_member()\
@@ -35,6 +35,7 @@ namespace reflect
 		};\
 		return reflect_member{};\
 	}
+#endif
 
 	template<typename _Ty>
 	constexpr auto title()
