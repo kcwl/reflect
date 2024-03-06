@@ -1,6 +1,6 @@
 #pragma once
 #include <tuple>
-#include <reflect/concepts.hpp>
+#include "concepts.hpp"
 
 
 namespace  reflect
@@ -16,7 +16,7 @@ namespace  reflect
 			return std::forward_as_tuple();
 		}
 
-		template <class_t _Ty>
+		template <single_t _Ty>
 		constexpr auto make_tuple(_Ty&& val, size_t_<1>) noexcept
 		{
 			auto&& [a] = val;

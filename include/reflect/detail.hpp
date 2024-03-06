@@ -74,7 +74,7 @@ namespace reflect
 		template<typename _Ty, std::size_t Index>
 		constexpr auto get()
 		{
-			constexpr auto member_info = _Ty::member_str(); 
+			constexpr auto member_info = _Ty::member_str();
 
 			constexpr std::size_t pos = member_info.find_first_of(";", find_n_of<_Ty, Index>());
 
