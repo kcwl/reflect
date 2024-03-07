@@ -1,7 +1,8 @@
 #pragma once
 #include "reflect/detail.hpp"
 
-
+namespace reflect
+{
 #ifndef MAKE_REFLECT
 #define MAKE_REFLECT(...)	\
 	template<typename _Ty>\
@@ -21,6 +22,8 @@
 		return reflect_member{};\
 	}
 #endif
+}
+
 
 #ifndef EXPEND
 #define EXPEND(...) __VA_ARGS__
