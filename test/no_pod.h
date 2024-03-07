@@ -10,14 +10,14 @@ struct arm
 	int right;
 };
 
-struct leg
+struct leg :arm
 {
 	int left;
 	int right;
 	std::string flag;
 };
 
-struct person
+struct person : leg
 {
 	int age;
 	std::string name;
@@ -73,9 +73,10 @@ struct query_role_list_body_response
 	}
 };
 
+
 BOOST_AUTO_TEST_CASE(complex_type)
 {
-	constexpr std::size_t size = reflect::tuple_size_v<person>;
+	constexpr std::size_t size = reflect::tuple_size_v<leg>;
 
 	static_assert(size == 4);
 
@@ -86,6 +87,10 @@ BOOST_AUTO_TEST_CASE(complex_type)
 	constexpr std::size_t str_size = reflect::tuple_size_v<std::string>;
 
 	static_assert(str_size == 1);
+
+	constexpr auto res = std::is_aggregate_v<s3dbi_role_base_info>;
+
+	constexpr auto ress = std::is_aggregate_v<query_role_list_body_response>;
 }
 
 BOOST_AUTO_TEST_SUITE_END()

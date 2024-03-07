@@ -2,24 +2,24 @@
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/unit_test_suite.hpp>
 #include <reflect.hpp>
-#include "generate.h"
-#include "no_pod.h"
 
 BOOST_AUTO_TEST_SUITE(reflect)
 
 struct person
 {
 	REFLECT_REGIST(
-	int age; 
+		int age;
 	double sex; )
 };
 
 struct animal
 {
-	REFLECT_REGIST(
+REFLECT_REGIST
+(
 	uint16_t kind;
 	uint32_t knee;
-	float bytes;)
+	float bytes;
+)
 };
 
 BOOST_AUTO_TEST_CASE(struct_name)

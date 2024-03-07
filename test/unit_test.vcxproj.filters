@@ -44,7 +44,13 @@
     <ClInclude Include="no_pod.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\macro_bind.hpp">
+    <ClInclude Include="..\include\reflect\macro_bind.hpp">
+      <Filter>头文件\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\reflect\for_each.hpp">
+      <Filter>头文件\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\reflect\regist.hpp">
       <Filter>头文件\reflect</Filter>
     </ClInclude>
   </ItemGroup>

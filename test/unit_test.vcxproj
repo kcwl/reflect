@@ -136,10 +136,12 @@
   <ItemGroup>
     <ClInclude Include="..\include\reflect.hpp" />
     <ClInclude Include="..\include\reflect\detail.hpp" />
+    <ClInclude Include="..\include\reflect\for_each.hpp" />
     <ClInclude Include="..\include\reflect\generated.hpp" />
+    <ClInclude Include="..\include\reflect\macro_bind.hpp" />
+    <ClInclude Include="..\include\reflect\regist.hpp" />
     <ClInclude Include="..\include\reflect\size.hpp" />
     <ClInclude Include="..\include\reflect\concepts.hpp" />
-    <ClInclude Include="..\macro_bind.hpp" />
     <ClInclude Include="generate.h" />
     <ClInclude Include="no_pod.h" />
   </ItemGroup>
