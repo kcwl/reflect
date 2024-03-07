@@ -23,8 +23,6 @@ namespace reflect
 		{
 			static_assert(Start == End, "binary search error");
 
-			//return detect_fields_count_greedy_number<_Ty, Start>(1L);
-
 			if constexpr (aggregate_initialize_t<_Ty, Start>)
 			{
 				return Start;
