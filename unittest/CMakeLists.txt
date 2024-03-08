@@ -1,7 +1,3 @@
-if(WIN32)
-set(CMAKE_MSVC_RUNTIME_LIBRARY, "MultiThreaded $<$<CONFIG:DEBUG>:DEBUG>DLL")
-endif()
-
 project(unittest)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -24,6 +20,7 @@ target_link_directories(unittest PUBLIC ${GTEST_LIB})
 
 if(WIN32)
 set(LIBS gtest.lib gtest_main.lib)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 else()
 set(LIBS libgtest.a libgtest_main.a)
 endif()
