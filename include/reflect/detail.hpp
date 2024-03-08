@@ -21,7 +21,7 @@ namespace reflect
 
 			constexpr auto temp_name = name.substr(left_bracket + 1, end_bracket - left_bracket - 1);
 
-			constexpr auto start = name.find_last_of(":");
+			constexpr auto start = temp_name.find_last_of(" ");
 
 			if constexpr (start == std::string_view::npos)
 			{
@@ -29,7 +29,16 @@ namespace reflect
 			}
 			else
 			{
-				return name.substr(start + 1, end_bracket - start - 1);
+				constexpr auto namespace_name = temp_name.substr(start + 1, end_bracket - start - 1);
+
+				constexpr auto last = namespace_name.find_last_of(":");
+
+				if constexpr (last != std::string_view::npos)
+					return namespace_name.substr(last + 1);
+				else
+				{
+					return namespace_name;
+				}
 			}
 #else
 			constexpr std::string_view name = __PRETTY_FUNCTION__;
