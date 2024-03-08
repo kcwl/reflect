@@ -14,7 +14,6 @@ set(SOURCES
 	test.cpp
 )
 
-
 add_executable(unittest ${INCLUDES} ${SOURCES})
 
 target_link_directories(unittest PUBLIC ${GTEST_LIB})
