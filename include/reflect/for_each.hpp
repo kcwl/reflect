@@ -10,6 +10,12 @@ namespace reflect
 		return std::get<N>(detail::template make_tuple(val, detail::size_t_<tuple_size_v<_Ty>>{}));
 	}
 
+	template<typename _Ty, std::size_t N>
+	constexpr auto name() -> std::string_view
+	{
+		return std::get<N>(decltype(_Ty::template make_reflect_member<_Ty>())::apply_member());
+	}
+
 	template <typename _Tuple, typename _Func, std::size_t... I>
 	constexpr auto for_each(_Tuple&& tuple, _Func&& f, std::index_sequence<I...>)
 	{

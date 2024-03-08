@@ -20,10 +20,4 @@ namespace reflect
 	{
 		return detail::template feild_name<_Ty>();
 	}
-
-	template<typename _Ty, std::size_t N>
-	constexpr auto name() -> std::string_view
-	{
-		return std::get<N>(decltype(_Ty::template make_reflect_member<_Ty>())::apply_member());
-	}
 }

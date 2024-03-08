@@ -36,3 +36,4 @@ Debug/
 Release/
 .vs/
 packages/
+build/
