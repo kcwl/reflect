@@ -16,12 +16,10 @@ set(SOURCES
 
 add_executable(unittest ${INCLUDES} ${SOURCES})
 
-message("gtest lib" ${GTEST_LIB})
-
 target_link_directories(unittest PUBLIC ${GTEST_LIB})
 
 if(WIN32)
-set(LIBS libgtest.lib libgtest_main.lib)
+set(LIBS gtest.lib gtest_main.lib)
 else()
 set(LIBS libgtest.a libgtest_main.a)
 endif()
