@@ -3,6 +3,8 @@ project(unittest)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 20)
 
+set(CMAKE_MSVC_RUNTIME_LIBRARY, "MultiThreaded $<$<CONFIG:DEBUG>:DEBUG>DLL")
+
 include_directories(${GTEST_DIR})
 
 set(INCLUDES
