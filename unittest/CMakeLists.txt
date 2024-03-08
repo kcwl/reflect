@@ -20,6 +20,12 @@ message("gtest lib" ${GTEST_LIB})
 
 target_link_directories(unittest PUBLIC ${GTEST_LIB})
 
-target_link_libraries(unittest libgtest.a libgtest_main.a)
+if(WIN32)
+set(LIBS libgtest.lib libgtest_main.lib)
+else
+set(LIBS libgtest.a libgtest_main.a)
+endif()
+
+target_link_libraries(unittest ${LIBS})
 
 add_test(NAME unittest COMMAND unittest)
