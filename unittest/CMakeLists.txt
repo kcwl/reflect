@@ -16,6 +16,8 @@ set(SOURCES
 
 add_executable(unittest ${INCLUDES} ${SOURCES})
 
+message("gtest lib" ${GTEST_LIB})
+
 target_link_directories(unittest PUBLIC ${GTEST_LIB})
 
 target_link_libraries(unittest libgtest.a libgtest_main.a)
