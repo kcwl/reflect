@@ -12,6 +12,7 @@ namespace reflect
 			template<typename _Ty>
 			constexpr operator _Ty() const noexcept
 			{
+				return _Ty{};
 			}
 		};
 
