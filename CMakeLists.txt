@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(reflect_test)
+project(reflect)
 
 set(GTEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd/googletest/googletest/include)
 
