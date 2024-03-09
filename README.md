@@ -2,6 +2,8 @@
 c++20 static reflect library
 
 ## build status
+[![codecov](https://codecov.io/gh/kcwl/reflect/graph/badge.svg?token=B1X6HFIFT3)](https://codecov.io/gh/kcwl/reflect)
+
 [![Ubuntu(clang)](https://github.com/kcwl/reflect/actions/workflows/cmake-ubuntu-clang.yml/badge.svg)](https://github.com/kcwl/reflect/actions/workflows/cmake-ubuntu-clang.yml)
 [![Ubuntu(gcc)](https://github.com/kcwl/reflect/actions/workflows/cmake-ubuntu-gcc.yml/badge.svg)](https://github.com/kcwl/reflect/actions/workflows/cmake-ubuntu-gcc.yml)
 [![Visual Stadio](https://github.com/kcwl/reflect/actions/workflows/cmake-windows-vs.yml/badge.svg)](https://github.com/kcwl/reflect/actions/workflows/cmake-windows-vs.yml)
