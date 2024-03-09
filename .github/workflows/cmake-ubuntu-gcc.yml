@@ -45,7 +45,7 @@ jobs:
     - name: install gcovr
       shell: bash
       run: |
-        apt-get install pip -y
+        sudo apt-get install -y pip
         pip install gcovr
 
     - name: configure cmake
