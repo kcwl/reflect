@@ -21,6 +21,9 @@ set(GTEST_LIB ${CMAKE_CURRENT_SOURCE_DIR}/build/lib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+include(cmake/CodeCoverage.cmake)
+APPEND_COVERAGE_COMPILER_FLAGS()
+
 enable_testing()
 
 add_subdirectory(3rd/googletest)

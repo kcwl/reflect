@@ -27,3 +27,7 @@ endif()
 target_link_libraries(unittest ${LIBS})
 
 add_test(NAME unittest COMMAND unittest)
+
+setup_target_for_coverage_gcovr_xml(
+	$(PROJECT_NAME)_cover NAME coverage
+)
