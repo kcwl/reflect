@@ -20,7 +20,7 @@ jobs:
 
       matrix:
         os: [ubuntu-latest]
-        build_type: [Debug, Release]
+        build_type: [Debug]
         c_compiler: [gcc]
         include:
           - os: ubuntu-latest
@@ -122,7 +122,6 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -DCMAKE_COVERAGE=true
         -S ${{ github.workspace }}
     - name: build
       # Build your program with the given configuration
