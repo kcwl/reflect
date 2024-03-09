@@ -2,8 +2,7 @@
 c++20 static reflect library
 
 ## build status
-
-
+[![cmake on multiple platforms](https://github.com/kcwl/reflect/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/kcwl/reflect/actions/workflows/cmake-multi-platform.yml)
 ## introdution
 refelct is a static reflect library with c++ 20 that only uses very few codes can complete regist. it is surprise that is header only, so you can use it only include them.
 
