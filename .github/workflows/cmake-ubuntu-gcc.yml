@@ -70,9 +70,7 @@ jobs:
 
     - name: generate coverage report
       working-directory: ${{github.wrokspace}}/build
-      shell: bash
-      run: |
-        make coverage
+      run: make coverage
 
     - name: upload coverage report
       uses: codecov/codecov-action@v4
