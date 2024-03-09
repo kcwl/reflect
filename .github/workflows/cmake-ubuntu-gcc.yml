@@ -69,12 +69,12 @@ jobs:
       run: ctest --build-config ${{ matrix.build_type }}
 
     - name: generate coverage report
-      working-directory: ${{github.wrokspace}}/build
+      working-directory: ${{github.workspace}}/build
       run: make coverage
 
     - name: upload coverage report
       uses: codecov/codecov-action@v4
       with:
-        files: ${{github.wrokspace}}/build/coverage.xml
+        files: ${{github.workspace}}/build/coverage.xml
         fail_ci_if_error: true
         slug: kcwl/reflect
