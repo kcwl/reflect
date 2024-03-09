@@ -48,7 +48,7 @@ REFLECT_REGIST
 	int age;
 	bool sex;
 	std::string name;
-)_
+)
 };
 
 person pers{1,true,"person"};
