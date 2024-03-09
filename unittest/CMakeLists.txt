@@ -14,16 +14,11 @@ set(SOURCES
 	test.cpp
 )
 
+
 add_executable(unittest ${INCLUDES} ${SOURCES})
 
 target_link_directories(unittest PUBLIC ${GTEST_LIB})
 
-if(WIN32)
-set(LIBS gtest.lib gtest_main.lib)
-else()
-set(LIBS libgtest.a libgtest_main.a)
-endif()
-
-target_link_libraries(unittest ${LIBS})
+target_link_libraries(unittest libgtest.a libgtest_main.a)
 
 add_test(NAME unittest COMMAND unittest)
