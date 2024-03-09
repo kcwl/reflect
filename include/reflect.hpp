@@ -1,5 +1,4 @@
 #pragma once
-#include "reflect/size.hpp"
 #include "reflect/for_each.hpp"
 #include "reflect/regist.hpp"
 #include <string_view>
