@@ -28,6 +28,8 @@ target_link_libraries(unittest ${LIBS})
 
 add_test(NAME unittest COMMAND unittest)
 
+if(CMAKE_COVERAGE)
 setup_target_for_coverage_gcovr_xml(
 	$(PROJECT_NAME)_cover NAME coverage
 )
+endif()
