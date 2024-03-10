@@ -1,6 +1,6 @@
 #pragma once
-#include "reflect/generated.hpp"
-#include "reflect/size.hpp"
+#include "generated.hpp"
+#include "size.hpp"
 #include <utility>
 
 namespace reflect
