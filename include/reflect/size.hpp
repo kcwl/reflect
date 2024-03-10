@@ -78,5 +78,5 @@ namespace reflect
 	}
 
 	template<typename _Ty>
-	constexpr static std::size_t tuple_size_v = detail::tuple_size<_Ty>::value;
+	constexpr static std::size_t tuple_size_v = detail::tuple_size<std::remove_cvref_t<_Ty>>::value;
 }
