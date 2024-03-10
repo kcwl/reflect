@@ -1,5 +1,5 @@
 #pragma once
-#include "reflect/detail.hpp"
+#include "detail.hpp"
 
 namespace reflect
 {
